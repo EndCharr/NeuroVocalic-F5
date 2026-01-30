@@ -1,0 +1,67 @@
+[build-system]
+requires = ["setuptools >= 61.0", "setuptools-scm>=8.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "NeuroVocalic-F5"
+dynamic = ["version"]
+authors = [
+    {name = "EndCharr", email = "academia.endcharr@gmail.com"},
+]
+description = "NeuroVocalic-F5: A Fairytaler that Fakes Fluent and Faithful Speech with Flow Matching"
+readme = "README.md"
+license = {text = "MIT License"}
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+]
+dependencies = [
+    "accelerate>=0.33.0",
+    "bitsandbytes>0.37.0",
+    "cached_path",
+    "click",
+    "datasets",
+    "ema_pytorch>=0.5.2",
+    "gradio",
+    "huggingface-hub",
+    "jieba",
+    "librosa",
+    "matplotlib",
+    "num2words==0.5.13",
+    "numpy",
+    "pydub",
+    "pydantic",
+    "pypinyin",
+    "safetensors",
+    "soundfile",
+    "tomli",
+    "torch>=2.0.0",
+    "torchaudio>=2.0.0",
+    "torchdiffeq",
+    "tqdm>=4.65.0",
+    "transformers",
+    "transformers_stream_generator",
+    "vocos",
+    "wandb",
+    "x_transformers>=1.31.14"
+]
+
+[project.optional-dependencies]
+eval = [
+    "faster_whisper",
+    "jiwer==4.0.0",
+    "funasr",
+    "modelscope",
+    "zhconv",
+    "zhon",
+]
+
+[project.urls]
+Homepage = "https://github.com/EndCharr/NeuroVocalic-F5"
+
+[project.scripts]
+"f5-tts_infer-cli" = "f5_tts.infer.infer_cli:main"
+"f5-tts_infer-gradio" = "f5_tts.infer.infer_gradio:main"
+"f5-tts_finetune-cli" = "f5_tts.train.finetune_cli:main"
+"f5-tts_finetune-gradio" = "f5_tts.train.finetune_gradio:main"
